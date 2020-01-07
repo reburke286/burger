@@ -1,10 +1,36 @@
-<script src="burgers.js"></script>
-
 <h1>BUILD-A-BURGER</h1>
 
-<form>
-    <div class="form-group-row col-md-4">
-        <textarea placeholder="Enter your burger idea here" class="form-control" id="newBurger" rows="3"></textarea>
-        <button type="button" class="btn btn-light" id="add-btn">Submit</button>
+<div class="container">
+    <form>
+        <div class="form-group-row col-md-4">
+            <textarea placeholder="Enter your burger idea here" class="form-control" id="newBurger" rows="3"></textarea>
+            <button type="button" class="btn btn-light" id="add-btn">Submit</button>
+        </div>
+    </form>
+</div>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <H3>UNEATEN</H3>
+            <ul>
+                {{#each burger}}
+                {{#unless devoured}}
+                {{> devoured-button devoured=false}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <H3>EATEN</H3>
+            <ul>
+                {{#each burger}}
+                {{#if devoured}}
+                {{> devoured-button devoured=true}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
     </div>
-</form>
+</div>
