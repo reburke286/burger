@@ -1,6 +1,6 @@
 <h1>BUILD-A-BURGER</h1>
 
-<div class="container">
+<div class="container" id="form-div">
     <form>
         <div class="form-group-row col-md-4">
             <textarea placeholder="Enter your burger idea here" class="form-control" id="newBurger" rows="3"></textarea>
@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <H3>UNEATEN</H3>
             <ul>
                 {{#each burger}}
@@ -22,12 +22,12 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <H3>EATEN</H3>
             <ul>
                 {{#each burger}}
                 {{#if devoured}}
-                {{> devoured-button devoured=true}}
+                {{> no-button }}
                 {{/if}}
                 {{/each}}
             </ul>

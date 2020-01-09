@@ -2,7 +2,8 @@
     {{name}}
 
     <button class="devoured" data-id="{{id}}" data-devoured="{{devoured}}">
-        {{#if devoured}}Devoured{{else}}Eat Me.{{/if}}
+        {{#unless devoured}}Eat Me{{/unless}}
     </button>
 
 </li>
+

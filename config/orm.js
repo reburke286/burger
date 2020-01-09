@@ -25,12 +25,10 @@ function objToSql(ob) {
     const value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
+
       arr.push(key + "=" + value);
     }
   }
@@ -88,6 +86,9 @@ const orm = {
       cb(result);
     });
   },
+
+  // UPDATE `table` SET `isSuccessful` = 1 WHERE `column` = 'criteria'
+
   delete: function(table, condition, cb) {
     let queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
