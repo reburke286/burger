@@ -1,33 +1,38 @@
-$(".devoured").on("click", function(event) {
-  const id = $(this).data("id");
-  const updateDevoured = $(this).data("devoured");
+$(document).ready(function() {
+  $(function() {
+    $(".devoured").on("click", function(event) {
+      var id = $(this).data("id");
+      var newDevoured = $(this).data("devoured");
+      console.log(newDevoured);
 
-  const newDevouredState = {
-    devoured: updateDevoured
-  };
-  console.log(id, updateDevoured);
+      var newDevouredState = {
+        devoured: newDevoured
+      };
 
-  //Send PUT request
-  $.ajax("/" + id, {
-    type: "PUT",
-    data: newDevouredState
-  }).then(function() {
-    console.log("changed devoured to ", newDevouredState);
-    location.reload();
+      // Send the PUT request.
+      $.ajax("/", id, {
+        type: "PUT",
+        data: newDevouredState
+      }).then(function() {
+        console.log("changed devoured to", newDevoured);
+        // Reload the page to get the updated list
+        // location.reload();
+      });
+    });
   });
-});
 
-$("#add-btn").on("click", function() {
-  const newBurger = {
-    name: $("#newBurger").val(),
-    devoured: $("[name=devoured]:checked").val()
-  };
-  $.ajax("/", {
-    type: "POST",
-    data: newBurger
-  }).then(function() {
-    console.log(newBurger);
-    $("#newBurger").val("");
-    location.reload();
+  $("#add-btn").on("click", function() {
+    let newBurger = {
+      name: $("#newBurger").val(),
+      devoured: 0
+    };
+    $.ajax("/", {
+      type: "POST",
+      data: newBurger
+    }).then(function() {
+      console.log(newBurger);
+      $("#newBurger").val("");
+      location.reload();
+    });
   });
 });

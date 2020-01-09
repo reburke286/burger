@@ -7,7 +7,7 @@ const connection = require("../config/connection.js");
 // The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
 function printQuestionMarks(num) {
-  const arr = [];
+  let arr = [];
 
   for (let i = 0; i < num; i++) {
     arr.push("?");
@@ -18,7 +18,7 @@ function printQuestionMarks(num) {
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
-  const arr = [];
+  let arr = [];
 
   // loop through the keys and push the key/value as a string int arr
   for (var key in ob) {
@@ -51,7 +51,7 @@ const orm = {
     });
   },
   create: function(table, cols, vals, cb) {
-    const queryString = "INSERT INTO " + table;
+    let queryString = "INSERT INTO " + table;
 
     queryString += " (";
     queryString += cols.toString();
@@ -72,7 +72,7 @@ const orm = {
   },
   // An example of objColVals would be {name: panther, sleepy: true}
   update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+    let queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
@@ -89,7 +89,7 @@ const orm = {
     });
   },
   delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
+    let queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 

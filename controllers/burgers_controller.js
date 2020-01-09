@@ -27,8 +27,10 @@ router.post("/", function(req, res) {
 });
 
 router.put("/", function(req, res) {
-  const id = "id = " + req.params.id;
-  burger.update({ devoured: req.body.devoured }, id, function(result) {
+  console.log("req.body = " + req.params);
+  const condition = "id = " + req.params.id;
+  console.log(condition);
+  burger.update({ devoured: req.body.devoured }, condition, function(result) {
     if (result.changedRows === 0) {
       return res.status(404).end();
     } else {
